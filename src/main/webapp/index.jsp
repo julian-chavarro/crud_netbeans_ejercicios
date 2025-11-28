@@ -65,7 +65,7 @@
 
         <div class="menu-grid">
             <!-- ✅ Objetivos -->
-            <a href="ObjetivosServlet" class="menu-item">
+            <a href="objetivoControlador?accion=listar" class="menu-item">
                 <i class="fas fa-bullseye menu-icon"></i>
                 <div class="menu-title">Objetivos</div>
                 <div class="menu-desc">Configura tus metas de entrenamiento</div>

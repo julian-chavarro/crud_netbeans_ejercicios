@@ -18,8 +18,8 @@ public class ConexionDao {
     public static Connection ObtenerConexion() {
         Connection conn = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Cargar driver
-            conn = DriverManager.getConnection(URL, USER, PASSWORD); // Conectar
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("✅ Conexión exitosa a la base de datos");
         } catch (ClassNotFoundException e) {
             System.out.println("❌ Driver no encontrado: " + e.getMessage());
@@ -34,20 +34,25 @@ public class ConexionDao {
         return ObtenerConexion();
     }
 
-    // Test de conexión
-   public static void main(String[] args) {
-    try (Connection conn = ConexionDao.ObtenerConexion()) {
-        if (conn != null && !conn.isClosed()) {
-            System.out.println("Conexión exitosa!");
-        } else {
-            System.out.println("No se pudo conectar.");
+    // Para depuración
+    public static void main(String[] args) {
+        try (Connection conn = ConexionDao.ObtenerConexion()) {
+            if (conn != null && !conn.isClosed()) {
+                System.out.println("Conexión exitosa!");
+            } else {
+                System.out.println("No se pudo conectar.");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-    } catch (Exception ex) {
-        ex.printStackTrace();
+    }
+
+    // MÉTODO QUE USAN TUS DAO
+    public Connection conectar() {
+        return ObtenerConexion();
     }
 }
 
-}
 
 
 
